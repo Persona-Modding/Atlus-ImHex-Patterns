@@ -1,4 +1,3 @@
-#include <std/io>
 #include <atlus/common/ftd.hexpat>
 
 struct Quest {
