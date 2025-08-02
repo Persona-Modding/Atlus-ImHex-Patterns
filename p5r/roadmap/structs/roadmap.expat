@@ -1,0 +1,28 @@
+u32 index = -1;
+
+enum MinimapMode : u32 {
+    No_Minimap = 0,
+    R1_Menu_Only = 2,
+    R1_Menu_and_Overworld = 3,
+};
+
+struct roadmapEntry {
+    s16 fldMajor [[name("Field Major ID")]];
+    s8 fldMinor [[name("Field Minor ID")]];
+    s8 fldSub [[name("Field Sub ID")]];
+    s16 originX;
+    s16 originY;
+    s16 TexpackId [[name("Texpack entry ID")]];
+    s16 TexlistBlock;
+    MinimapMode mode;
+
+    index = index + 1;
+}[[name(std::format("Entry [{}]", index)), format("fmt_roadmapEntry")]];
+
+struct roadmapBin {
+    roadmapEntry entries[while(std::mem::read_unsigned($, 8) != 0xFFFFFFFFFFFFFFFF)] [[inline]];
+};
+
+fn fmt_roadmapEntry(ref roadmapEntry self) {
+    return std::format("f{:03d}_{:03d}_{}, Texpack: {:03d}, Texlist: {:02d}, {}", self.fldMajor, self.fldMinor, self.fldSub, self.TexpackId, self.TexlistBlock, self.mode);
+};

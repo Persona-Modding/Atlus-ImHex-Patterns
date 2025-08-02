@@ -1,0 +1,35 @@
+// common includes
+#include <p5r/common/Bitflag.expat>
+#include <p5r/enums/Items.expat>
+
+// ftd struct includes
+#include <p5r/ftd/structs/cmmEventNo.expat>
+#include <p5r/ftd/structs/fldWireAnimData.expat>
+#include <p5r/ftd/structs/fldDngPack.expat>
+#include <p5r/ftd/structs/datEncountPack.expat>
+#include <p5r/ftd/structs/fldObjFlag.expat>
+#include <p5r/ftd/structs/datTBoxRnd.expat>
+#include <p5r/ftd/structs/datTBox.expat>
+#include <p5r/ftd/structs/fldPlayerSpeed.expat>
+#include <p5r/ftd/structs/fldLmapStation.expat>
+#include <p5r/ftd/structs/fldLmapFare.expat>
+
+str fileName = hex::prv::get_information("file_name");
+
+struct ftdEntryStruct {
+    str s = std::format("{} entry [{}]", fileName, currentEntry);
+
+    match (std::string::to_upper(fileName)) {
+        ("DATENCOUNTPACK.FTD"): datEncountPack entry [[name(s)]];
+        ("FLDOBJFLAG.FTD"): fldObjFlag entry [[name(s)]];
+        ("DATTBOXRND.FTD"): datTBoxRnd entry [[name(s)]];
+        ("DATTBOX.FTD"): datTBox entry [[name(s)]];
+        ("CMMEVENTNO.CTD"): cmmEventNo entry [[name(s)]];
+        ("FLDWIREANIMDATA.FTD"): fldWireAnimData entry [[name(s)]];
+        ("FLDDNGPACK.FTD"): fldDngPack entry [[name(s)]];
+        ("FLDPLAYERSPEED.FTD"): fldPlayerSpeed entry [[name(s)]];
+        ("FLDLMAPSTATION.FTD"): fldLmapStation entry [[name(s)]];
+        ("FLDLMAPFARE.FTD"): fldLmapFare entry [[name(s)]];
+        (_): u8 bytes[entrySize] [[name(s)]];
+    }
+}[[inline]];

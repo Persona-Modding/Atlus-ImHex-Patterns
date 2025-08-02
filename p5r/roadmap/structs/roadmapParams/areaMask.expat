@@ -1,0 +1,12 @@
+struct areaMaskEntry {
+    vector2 unused[[hidden]];
+    vector2 Size;
+    vector2 Pos;
+    Bitflag Bitflag;
+    s32 BitflagEffect;
+    vector2 SelectTopLeft;
+    vector2 SelectTopRight;
+    vector2 SelectBottomLeft;
+    vector2 SelectBottomRight;
+    s32 Unk44[[hidden]];
+}[[static, name("Area Mask")]];

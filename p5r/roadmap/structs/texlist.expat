@@ -1,0 +1,10 @@
+s32 texlistBlockIndex = -1;
+
+struct texlistEntry {
+    s16 texelemIndexes[24][[inline]];
+    texlistBlockIndex += 1;
+}[[name(std::format("texelemIndexes [{}]", texlistBlockIndex))]];
+
+struct texlistBin {
+    texlistEntry entry[while(!std::mem::eof())][[inline]];
+};

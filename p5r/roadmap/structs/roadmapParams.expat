@@ -1,0 +1,75 @@
+#include <p5r/roadmap/structs/roadmapParams/areaDisplace.expat>
+#include <p5r/roadmap/structs/roadmapParams/areaMask.expat>
+#include <p5r/roadmap/structs/roadmapParams/icon.expat>
+#include <p5r/roadmap/structs/roadmapParams/textureParam.expat>
+
+enum mapParamType : u32
+{
+    Texture_Params = 0,
+    Area_Displacement = 1,
+    Area_Displacement2 = 2,
+    White_Arrow_Down = 3,
+    Safe_Room = 4,
+    Persistent_Red_Exclamation_Mark = 5,
+    Big_Chest = 7,
+    Red_Exclamation_Mark = 8,
+    Green_Lock = 10,
+    Red_Lock = 11,
+    Red_X = 12,
+    Gray_Arrow_Up = 13,
+    Gray_Arrow_Right = 14,
+    Gray_Arrow_Down = 15,
+    Gray_Arrow_Left = 16,
+    Chest = 17,
+    Area_Mask1 = 18,
+    Red_Destination_Marker = 19,
+    Velvet = 20,
+    Red_Butterfly = 21,
+    Opened_Chest = 22,
+    Big_Sparkle = 23,
+    Exit_Pointing_Up = 24,
+    Exit_Pointing_Down = 25,
+    Sparkling_Chest = 26,
+    Area_Mask2 = 27,
+    Player_Indicator = 28,
+    Elevator_Arrow_Up = 29,
+    Elevator_Arrow_Down = 30,
+    White_Circle = 31,
+    Down_Indicator_Pointing_Up = 32,
+    Down_Indicator_Pointing_Down = 33,
+    Up_Indicator_Pointing_Up = 34,
+    Up_Indicator_Pointing_Down = 35,
+    Gray_Arrow_Up_Left = 36,
+    Gray_Arrow_Up_Right = 37,
+    Gray_Arrow_Down_Left = 38,
+    Gray_Arrow_Down_Right = 39,
+    Palace_Ruler_Treasure = 40,
+    Area_Mask3 = 41,
+    Area_Mask4 = 42,
+    Yellow_Check_Mark = 43,
+    Will_Seed = 97,
+};
+
+struct roadmapParamEntry {
+    mapParamType paramType;
+    str name = "";
+
+    match (paramType) {
+        (0) : { textureParamEntry entry; name = "Texture Param"; }
+        (1 | 2) : { areaDisplaceEntry entry; name = "Area Displace"; }
+        (18 | 27 | 41 | 42) : { areaMaskEntry entry; name = "Area Mask"; }
+        (_) : { iconEntry entry; name = "Icon"; }
+    }
+}[[name(name), format("fmt_roadmapParamEntry")]];
+
+fn fmt_roadmapParamEntry(ref roadmapParamEntry self) {
+    return std::format("{}, Flag -> {:05d}", self.paramType, self.entry.Bitflag);
+};
+struct roadmapParamLayer {
+    roadmapParamEntry entries[while(std::mem::read_unsigned($ + 0x1c, 4) != 0xFFFFFFFE)][[inline]];
+    roadmapParamEntry sentinel[[hidden]];
+};
+
+struct roadmapParamBin {
+   roadmapParamLayer layers[while(std::mem::size() - $ > 0x48)];
+};
