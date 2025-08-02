@@ -1,0 +1,10 @@
+struct fldDngPack {
+    u16 EncountPackEntry;
+    u16 ObjFlagEntry;
+    u16 TboxRndEntry;
+    u16 unk06[5];
+}[[format("fmt_fldDngPack"), static]];
+
+fn fmt_fldDngPack(ref fldDngPack self) {
+    return std::format("Encount {:03d}, ObjFlag {:03d}, TboxRndEntry {:02d}", self.EncountPackEntry, self.ObjFlagEntry, self.TboxRndEntry);
+};

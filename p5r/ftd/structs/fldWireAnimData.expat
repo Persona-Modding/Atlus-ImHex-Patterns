@@ -1,0 +1,57 @@
+struct fldWireAnimData {
+    u16 SequenceId [[name("Wire Sequence ID")]];
+    u16 AnimationID [[name("Joker Field Animation Minor ID")]];
+    u16 WireLaunchSndFrame;
+    u16 WireHitEffectFrame;
+    u16 WireDashEffectStartFrame; //also starts whoosh sound
+    u16 WireDashEffectStopFrame;
+    u16 field0c;
+    u16 CueID [[name("Wire Whoosh Sound Cue ID")]];
+    u16 field10;
+    u16 field12;
+    u16 SecondaryDashEffectStartFrame;
+    u16 SecondaryDashEffectStopFrame;
+    u16 field18;
+    u16 field1a;
+    u16 field1c;
+    u16 FootstepSplashFrame;
+    u16 CameraMajor [[name("Field Camera Major ID")]];
+    u16 CameraMinor [[name("Field Camera Minor ID")]];
+    u8 field24;
+    u8 CameraSub [[name("Field Camera Sub ID")]];
+    u16 WireAnimID [[name("Grappling Hook (it6400_001.GMD) Animation ID")]];
+    u16 FieldMajor [[name("Field Major ID")]];
+    u16 FieldMinor [[name("Field Minor ID")]];
+    u16 GFSMajorID [[name("Origin GFS Major ID")]];
+    u16 GFSMinorID [[name("Origin GFS Minor ID")]];
+    s32 xStartOffset [[name("X Position Start Add Translate")]];
+    s32 yStartOffset [[name("Y Position Start Add Translate")]];
+    s32 zStartOffset [[name("Z Position Start Add Translate")]];
+    s32 xEndOffset [[name("X Position End Translate")]];
+    s32 yEndOffset [[name("Y Position End Translate")]];
+    s32 zEndOffset [[name("Z Position End Translate")]];
+    u16 field48;
+    u16 field4a;
+    u16 objectModelReshnd0;
+    u16 objectModelAnimFrame0;
+    u16 objectModelAnimID0;
+    u16 field52;
+    u16 objectModelReshnd1;
+    u16 objectModelAnimFrame1;
+    u16 objectModelAnimID1;
+    u16 field5a;
+    u16 field5c;
+    u16 field5e;
+    u16 field60;
+    u16 field62;
+    u16 field64;
+    u16 field66;
+    u16 field68;
+    u16 field6a;
+    u16 field6c;
+    u16 field6e;
+}[[format("fmt_fldWireAnimData"), static]];
+
+fn fmt_fldWireAnimData(ref fldWireAnimData self) {
+    return std::format("Sequence {:04d} || f{:03d}_{:03d} || f{:03d}_{:03d}.GFS || af0001_{:03d}.GAP || fcmr{:04d}_{:04d}_{:04d}.GMD", self.SequenceId, self.FieldMajor, self.FieldMinor, self.GFSMajorID, self.GFSMinorID, self.AnimationID, self.CameraMajor, self.CameraMinor, self.CameraSub);
+};

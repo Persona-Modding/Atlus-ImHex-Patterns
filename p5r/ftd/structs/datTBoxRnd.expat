@@ -1,0 +1,24 @@
+s32 searchItemIndex = -1;
+s32 itemChoiceIndex = -1;
+
+struct datTBoxRndChoice {
+    u8 rate;
+    u8 type;
+    TboxIndex tboxItem;
+    itemChoiceIndex = itemChoiceIndex + 1;
+}[[name("Choice"), format("fmt_datTboxRndChoice"), static]];
+
+struct datTBoxRndSearchItem {
+    itemChoiceIndex = -1;
+    datTBoxRndChoice choices[10][[inline]];
+    searchItemIndex = searchItemIndex + 1;
+}[[name(std::format("Search Item [{}]", searchItemIndex))]];
+
+struct datTBoxRnd {
+    searchItemIndex = -1;
+    datTBoxRndSearchItem searchItem[4] [[inline]];
+};
+
+fn fmt_datTboxRndChoice(ref datTBoxRndChoice self) {
+    return std::format("rate {}, type {}, tboxItem {}", self.rate, self.type, self.tboxItem);
+};

@@ -1,0 +1,66 @@
+// uses currentBlockIdx from tbl.hexpat
+// uses currentBlockSize from tbl.hexpat
+
+struct SkillElements {
+    s8 ElementType;
+    s8 IsPassive;
+    s8 Inheritable;
+    u8 UnkR[4];
+    u8 RedundantBitfield;
+};
+
+struct SkillActiveData {
+    s16 unk00;
+    s8 CasterEffect[2];
+    s16 unk03;
+    s8 DamageStat;
+    s8 CostType;
+    s8 unk08;
+    u8 SkillCost;
+    s8 unk0a;
+    s8 IsPhysical;
+    s8 NumberOfTargets;
+    s8 ValidTargets; // Fill Bitfield;
+    s8 TargetRestrictions; // Copypasta Enum
+    s8 unk0f[5];
+    s8 Accuracy;
+    s8 MaxHits;
+    s8 MinHits;
+    s8 DamageType;
+    s16 BaseDamage;
+    s8 RestoreDrainSp;
+    s8 unk1b[2];
+    s8 SpAmount;
+    s8 ApplyCureEffect;
+    s8 EffectChance;
+    s8 unk20;
+    s8 EffectBitfield[6];
+    s8 BuffsDebuffs;
+    s8 unk28[4];
+    s8 ExtraEffects;
+    s8 CritChance;
+    s8 unk2e[2];
+};
+
+struct SkillUnkR {
+    s32 block[10];
+};
+
+struct SkillTraitData {
+    u16 ord;
+    u16 unk02;
+    s32 effectRate;
+    s32 effect;
+    s32 effectSize;
+    s32 traitEx[10];
+    s32 traitFlags;
+};
+
+struct SkillTblBlock {
+    match (currentBlockIdx) {
+        (0) : SkillElements block[currentBlockSize / 8];
+        (1) : SkillActiveData block[currentBlockSize / 0x30];
+        (2) : SkillUnkR block[currentBlockSize / 0x28];
+        (3) : SkillTraitData block[currentBlockSize / 0x3c];
+    }
+};

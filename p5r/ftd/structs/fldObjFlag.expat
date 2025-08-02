@@ -1,0 +1,12 @@
+struct fldObj{
+    Bitflag bitflag;
+    TboxIndex items[6];
+}[[format("fmt_fldObjFlag"), static]];
+
+struct fldObjFlag {
+    fldObj obj[10] [[inline]];
+}[[static]];
+
+fn fmt_fldObjFlag(ref fldObjFlag self) {
+    return std::format("flag {:05d}, itemIndex {}", self.bitflag, self.items);
+};

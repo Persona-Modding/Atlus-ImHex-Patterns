@@ -1,0 +1,14 @@
+struct fldPlayerSpeed {
+    s16 FieldMajor;
+    s16 FieldMinor;
+    s16 WalkSpeed;
+    s16 RunSpeed;
+    u8 AccelFrames;
+    u8 DecelFrames;
+    u8 StaticTurnFrames;
+    padding[1];
+}[[format("fmt_fldPlayerSpeed"), static]];
+
+fn fmt_fldPlayerSpeed(ref fldPlayerSpeed self) {
+    return std::format("f{:03d}_{:03d}, walk: {}, run {}, accel {}, decel {}", self.FieldMajor, self.FieldMinor, self.WalkSpeed, self.RunSpeed, self.AccelFrames, self.DecelFrames);
+};

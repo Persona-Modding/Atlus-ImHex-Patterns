@@ -1,0 +1,15 @@
+struct cmmEventNo {
+    s16 cmmId;
+    u8 type;
+    u8 cmmRank;
+    s16 eventMajorId;
+    s16 eventMinorId;
+    s16 Number;
+    s8 Place;
+    s8 Next;
+    s32 Flags[[comment("0 for regular follow-up, 1 for no follow-up, 2 for follow-up inside Leblanc")]];
+}[[format("fmt_cmmEventNo"), static]];
+
+fn fmt_cmmEventNo(ref cmmEventNo self) {
+    return std::format("Cmm {:02d} : Rank {:02d} : e{:03d}_{:03d}", self.cmmId, self.cmmRank, self.eventMajorId, self.eventMinorId);
+};

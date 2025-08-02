@@ -1,0 +1,25 @@
+struct ENC
+{
+  u16 EncounterID;
+  u8 Weight;
+  padding[1]; // always 0
+}[[format("fmt_ENC"), static]];
+
+struct datEncountPack {
+    u8 unk00;
+    u8 UnusedSlot[ 7 ];
+    u16 AmbushList[ 8 ];
+    ENC NormalEncounter[ 13 ];
+    ENC NormalPinchEncounter[ 5 ];
+    ENC WhatDo[ 5 ];
+    ENC TheseOnesDo[ 5 ];
+    ENC StrongEncounter[ 5 ];
+    ENC StrongPinchEncounter[ 5 ];
+    ENC TreasureEncounter[ 5 ];
+    ENC ReaperEncounter[ 1 ];
+    padding[4];
+}[[static]];
+
+fn fmt_ENC(ref ENC self) {
+        return std::format("Encounter {:03d}, Weight {}", self.EncounterID, self.Weight);
+};

@@ -1,0 +1,12 @@
+struct iconEntry {
+    vector2 unused[[hidden]];
+    vector2 Size[[hidden]];
+    vector2 Pos;
+    Bitflag Bitflag;
+    s32 BitflagEffect;
+    vector2 SelectTopLeft[[hidden]];
+    vector2 SelectTopRight[[hidden]];
+    vector2 SelectBottomLeft[[hidden]];
+    vector2 SelectBottomRight[[hidden]];
+    s32 Unk44[[hidden]];
+}[[static, name("Icon")]];

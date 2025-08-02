@@ -1,0 +1,22 @@
+s32 texelemIndex = -1;
+
+struct texelemEntry {
+    s16 TexpackID;
+    s8 Field02;
+    s8 TexpackMapLayer;
+    s16 TexpackPalaceTitle;
+    s16 TexpackRoomTitle;
+    Bitflag flag;
+    s16 Map_X_Offset;
+    s16 Map_Y_Offset;
+
+    texelemIndex = texelemIndex + 1;
+}[[name(std::format("Entry [{}]", texelemIndex)), format("fmt_texelemEntry")]];
+
+struct texelemBin {
+    texelemEntry entries[while(!std::mem::eof())] [[inline]];
+};
+
+fn fmt_texelemEntry(ref texelemEntry self) {
+    return std::format("Texpack: {:03d}_{} || Bitflag: {:05d}", self.TexpackID, self.TexpackMapLayer, self.flag);
+};

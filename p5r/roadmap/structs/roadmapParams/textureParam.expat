@@ -1,0 +1,12 @@
+struct textureParamEntry {
+    vector2 Pos[[hidden]];
+    vector2 Size;
+    vector2 Pos2[[hidden]];
+    Bitflag Bitflag;
+    s32 BitflagEffect;
+    vector2 SelectTopLeft[[hidden]];
+    vector2 SelectTopRight[[hidden]];
+    vector2 SelectBottomLeft[[hidden]];
+    vector2 SelectBottomRight[[hidden]];
+    s32 Unk44[[hidden]];
+}[[static, name("Texture Params")]];

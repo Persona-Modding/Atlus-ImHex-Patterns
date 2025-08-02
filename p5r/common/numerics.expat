@@ -1,0 +1,29 @@
+struct vector2 {
+    float x;
+    float y;
+}[[format("fmt_vector2")]];
+
+fn fmt_vector2(ref vector2 self) {
+    return std::format("x: {}, y: {}", self.x, self.y);
+};
+
+struct vector3 {
+    float x;
+    float y;
+    float z;
+}[[format("fmt_vector3")]];
+
+fn fmt_vector3(ref vector3 self) {
+    return std::format("x: {}, y: {}, z: {}", self.x, self.y, self.z);
+};
+
+struct quaternion {
+    float x;
+    float y;
+    float z;
+    float w;
+}[[format("fmt_quaternion")]];
+
+fn fmt_quaternion(ref quaternion self) {
+    return std::format("x: {}, y: {}, z: {}, w: {}", self.x, self.y, self.z, self.w);
+};

@@ -1,0 +1,26 @@
+struct fldLmapStation {
+    char stationName[32] [[name("Station Name")]];
+	Bitflag enablingBitflag [[name("Enabling Bitflag")]];
+	s32 unk24;
+	s16 bf_procedure [[name("lmap.bf Procedure Index")]];
+	s16 unk2a [[name("Something Mode")]];
+	s32 Id [[name("Something ID?")]];
+	char Description1[0x30] [[name("Description Line 1")]];
+	padding[0x10];
+	char Description2[0x30] [[name("Description Line 2")]];
+	padding[0x10];
+	char AttracTag[0x20] [[name("Attraction Tagline")]];
+	padding[0x10];
+	char AttracDesc1[0x20] [[name("Attraction Description Line 1")]];
+	padding[0x10];
+	char AttracDesc2[0x20] [[name("Attraction Description Line 2")]];
+	padding[0x10];
+	char AttracDesc3[0x20] [[name("Attraction Description Line 3")]];
+	padding[0x10];
+	char AttracDesc4[0x20] [[name("Attraction Description Line 4")]];
+	padding[0x10];
+}[[format("fmt_fldLmapStation")]];
+
+fn fmt_fldLmapStation(ref fldLmapStation self) {
+    return std::format("{}, Id: {:02d}, Procedure {:02d}, Bitflag {:05d}", self.stationName, self.Id, self.bf_procedure, self.enablingBitflag);
+};
