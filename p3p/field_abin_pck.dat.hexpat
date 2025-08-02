@@ -1,5 +1,5 @@
-#include <std/core.pat>
-std::core::set_endian(std::mem::Endian::Little);
+#pragma author moddaman
+#pragma endian little
 
 /* 
     TODO: Document what the unknown icons actually are,

@@ -1,5 +1,5 @@
-#include <std/core.pat>
-std::core::set_endian(std::mem::Endian::Little);
+#pragma author moddaman
+#pragma endian little
 
 struct defObject {
     u32 ID [[color("00FF00")]];

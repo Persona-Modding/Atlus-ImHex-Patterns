@@ -1,5 +1,5 @@
-#include <std/core.pat>
-std::core::set_endian(std::mem::Endian::Little);
+#pragma author moddaman
+#pragma endian little
 
 struct objName {
     char Name[64] [[color("DDDD00")]];
