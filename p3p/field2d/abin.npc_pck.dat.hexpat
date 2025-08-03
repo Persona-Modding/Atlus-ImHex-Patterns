@@ -88,6 +88,10 @@ struct pckDAT {
     type::Hex<u32> SegmentsLength [[name("Size"), color("00BB00"), comment("Total length of all NPC groups in bytes")]];
     u32 TotalSegments [[color("FF0000"), comment("Increments by 0x10")]];
     npcGroup GroupNPC[while(!std::mem::reached(SegmentsLength + 8))] [[name("Group")]];
+    /*
+        File may have extra bytes from here, but they're always just
+        duplicated from the first X bytes of the file for padding
+    */
 };
 
 pckDAT FILE @ 0 [[inline]];
