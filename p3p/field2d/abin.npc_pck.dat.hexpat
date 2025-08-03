@@ -59,12 +59,12 @@ struct chunkNPC {
         TODO: Investigate if workaround/fix for "files with incorrect Segment counts"
         I did for 010 template is actually necessary or not
     */
-    u32 PositionID [[color("0x00FF00")]];
-    chID CharacterID [[color("0xFF77FF"), comment("NPC's character ID, determines nametag and texture (nX_0_0_0.tmx)")]];
-    u8 TexVarID [[color("0xDD55DD"), comment("n0_X_0_0.tmx")]];
-    type::Hex<u16> Field06 [[color("0x0000FF"), comment("Always 0xE803?")]];
-    u32 ProcedureIndex [[color("0xFFFF00"), comment("Calls script procedure from corresponding BF file")]];
-    u32 ShowOnFlag [[color("0x0077FF"), comment("Shows NPC if bitflag is enabled")]];
+    u32 PositionID [[color("00FF00")]];
+    chID CharacterID [[color("FF77FF"), comment("NPC's character ID, determines nametag and texture (nX_0_0_0.tmx)")]];
+    u8 TexVarID [[color("DD55DD"), comment("n0_X_0_0.tmx")]];
+    type::Hex<u16> Field06 [[color("FF0000"), comment("Always 0xE803?")]];
+    u32 ProcedureIndex [[color("00FFFF"), comment("Calls script procedure from corresponding BF file")]];
+    u32 ShowOnFlag [[color("FF7700"), comment("Shows NPC if bitflag is enabled")]];
 };
 
 /**
@@ -81,12 +81,12 @@ fn isNextEnd() {
 
 struct npcGroup {
     chunkNPC NPC[while(!isNextEnd())];
-    chunkSep Seperator [[color("0000FF"), comment("Seperates NPC Groups)")]];
+    chunkSep Seperator [[color("FF0000"), comment("Seperates NPC Groups)")]];
 };
 
 struct pckDAT {
     type::Hex<u32> SegmentsLength [[name("Size"), color("00BB00"), comment("Total length of all NPC groups in bytes")]];
-    u32 TotalSegments [[color("FF0000"), comment("Increments by 0x10")]];
+    u32 TotalSegments [[color("0000FF"), comment("Increments by 0x10")]];
     npcGroup GroupNPC[while(!std::mem::reached(SegmentsLength + 8))] [[name("Group")]];
     /*
         File may have extra bytes from here, but they're always just

@@ -15,18 +15,18 @@ enum icons : u8 {
 };
 
 struct fldObject {
-    u16 ID [[color("FFFF00")]];
-    u8 Field02 [[color("00FFFF")]];
+    u16 ID [[color("00FFFF")]];
+    u8 Field02 [[color("FFFF00")]];
     icons Icon [[color("FF7FFF")]];
-    u16 Field04 [[color("00FFFF")]];
-    u16 Field06 [[color("0000FF"), comment("Appears to always be 0xE803?")]];
+    u16 Field04 [[color("FFFF00")]];
+    u16 Field06 [[color("FF0000"), comment("Appears to always be 0xE803?")]];
     u32 ProcedureIndex [[color("00FF00"), comment("Index of Flowscript procedure to call when Object is interacted with.")]];
-    u32 Field0C [[color("00FFFF")]];
+    u32 Field0C [[color("FFFF00")]];
 };
 
 struct pckDAT {
-    u32 TotalLength [[color("FF0000"), comment("Total length of all objects in bytes.")]];
-    u32 ObjectCount [[color("FF0000")]];
+    u32 TotalLength [[color("0000FF"), comment("Total length of all objects in bytes.")]];
+    u32 ObjectCount [[color("0000FF")]];
     fldObject FieldObjects[ObjectCount] [[name("Field Objects")]];
     /*
         File may have extra bytes from here, but they're always just

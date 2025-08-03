@@ -20,16 +20,16 @@ enum times : u8 {
 struct calendarGroup {
     u8 OnMonth [[color("FF77FF")]];
     u8 OnDay [[color("DD55DD")]];
-    times OnTime [[color("FFFF00")]];
-    type::Hex<u8> Field03 [[color("00FFFF")]];
-    type::Hex<u32> Field04 [[color("00FFFF")]];
+    times OnTime [[color("00FFFF")]];
+    type::Hex<u8> Field03 [[color("FFFF00")]];
+    type::Hex<u32> Field04 [[color("FFFF00")]];
     u32 GroupID [[color("00FF00"), comment("NPC Group to load from *_pck.dat")]];
     
 };
 
 struct tblDAT {
     type::Hex<u32> GroupsLength [[name("Size"), color("00BB00"), comment("Length of all calendar groups in bytes")]];
-    u32 TotalGroups [[name("Total Groups"), color("FF0000")]];
+    u32 TotalGroups [[name("Total Groups"), color("0000FF")]];
     calendarGroup LoadDates[TotalGroups] [[name("Calendar Groups"), comment("Changes NPC groups past specified calendar dates and times")]];
     /*
         File may have extra bytes from here, but they're always just
