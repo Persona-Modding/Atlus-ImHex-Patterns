@@ -17,6 +17,27 @@ fn fmt_vector3(ref vector3 self) {
     return std::format("x: {}, y: {}, z: {}", self.x, self.y, self.z);
 };
 
+struct vector4 {
+    float x;
+    float y;
+    float z;
+    float w;
+}[[format("fmt_vector4")]];
+
+fn fmt_vector4(ref vector4 self) { 
+    return std::format("x: {}, y: {}, z: {}, w: {}", self.x, self.y, self.z, self.w); 
+};
+
+struct euler {
+    float yaw;
+    float pitch;
+    float roll;
+}[[format("fmt_euler")]];
+
+fn fmt_euler(ref euler self) { 
+    return std::format("yaw: {}, pitch: {}, roll: {}", self.yaw, self.pitch, self.roll); 
+};
+
 struct quaternion {
     float x;
     float y;
