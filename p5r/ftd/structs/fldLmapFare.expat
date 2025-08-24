@@ -1,0 +1,3 @@
+struct fldLmapFare {
+    s32 CostToDest[36];
+};

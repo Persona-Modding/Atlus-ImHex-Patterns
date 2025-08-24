@@ -1,0 +1,9 @@
+struct datTBox {
+    ItemIndex item;
+    u8 itemCount;
+    padding[1];
+}[[static, format("fmt_datTBox")]];
+
+fn fmt_datTBox(ref datTBox self) {
+    return std::format("{}, Count: {}", self.item, self.itemCount);
+};

@@ -1,0 +1,17 @@
+struct Bitflag {
+    s32 value;
+}[[transform("tfm_Bitflag"), format("tfm_Bitflag"), static]];
+
+fn tfm_Bitflag(ref Bitflag self) {
+    return ConvertBitflag(self.value);
+};
+
+fn ConvertBitflag( s32 flag ) {
+    if      (flag >= 0x60000000){}
+    else if (flag >= 0x50000000){ flag = (flag - 0x50000000) + 12288; }
+    else if (flag >= 0x40000000){ flag = (flag - 0x40000000) + 11776; }
+    else if (flag >= 0x30000000){ flag = (flag - 0x30000000) + 11264; }
+    else if (flag >= 0x20000000){ flag = (flag - 0x20000000) + 6144;  }
+    else if (flag >= 0x10000000){ flag = (flag - 0x10000000) + 3072;  }
+    return flag;
+};

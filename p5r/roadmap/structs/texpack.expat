@@ -1,0 +1,39 @@
+u32 id = 0;
+
+struct texpackEntry {
+    str name = std::format("Texpack Id {}", id);
+
+    if (std::mem::read_unsigned($, 8) == 0xFFFFFFFFFFFFFFFF) {
+        id = id + 1;
+        name = "End of block";
+    }
+
+    s16 fldMajor;
+	s8 fldMinor;
+	s8 fldSub;
+	s32 LayerCount;
+	float Field3c;
+	Bitflag a_Flag_Thing;
+	float Layer_1_Ceiling_Height;
+	float Layer_2_Ceiling_Height;
+	float Layer_3_Ceiling_Height;
+	float Layer_4_Ceiling_Height;
+	float Layer_5_Ceiling_Height;
+	float Layer_6_Ceiling_Height;
+	float Layer_7_Ceiling_Height;
+	float Layer_8_Ceiling_Height;
+	Bitflag UnexploredEnablingBitflag;
+	s16 texelem_index_layer[6];
+	s16 Field30;
+	s16 Field32;
+	s32 unk0;
+}[[name(name), format("fmt_texpackEntry")]];
+
+struct texpackBin {
+    texpackEntry entry [while(!std::mem::eof())] [[inline]];
+};
+
+fn fmt_texpackEntry(ref texpackEntry self) {
+    if (self.fldMajor != -1)
+        return std::format("rmap_{:03d}_{}_{}.dds", self.fldMajor, self.fldMinor, self.fldSub);
+};
