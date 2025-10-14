@@ -1,4 +1,4 @@
-#pragma author oceanstuck
+#pragma author DeathChaos, oceanstuck
 #pragma endian big
 
 #include <std/io.pat>
