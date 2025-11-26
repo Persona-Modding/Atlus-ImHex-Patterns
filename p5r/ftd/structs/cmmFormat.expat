@@ -1,0 +1,19 @@
+//#include <atlus/p5r/enums/confidants.expat>
+
+struct cmmFormat {
+	s32 listOrder, unknown1;
+	Arcana cardTexPlus1;
+	u8 unknown2;
+	u16 unknown3;
+	s32 unknown4;
+	u16 pointsForNextRank[10];
+	s32 unknown5;
+	s32 nameTblId;
+	padding[4];
+	u32 unknown6; // 18 for twins, 0 for everyone else
+	padding[136]; // i *assume* this is padding since it's 0 for literally everyone?? why is there so much of it?? -ocean
+}[[format("fmt_cmmFormat"), static]];
+
+fn fmt_cmmFormat(ref cmmFormat self) {
+    return std::format("{}", self.cardTexPlus1);
+};
