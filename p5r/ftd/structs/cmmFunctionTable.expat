@@ -1,0 +1,16 @@
+bitfield CmmFunctionReqs {
+	trueJustice: 1;
+	disableInDoubt: 1;
+	sumirePartyAbility: 1;
+	bitflagReq: 1;
+	padding: 4;
+}[[bitfield_order(std::core::BitfieldOrder::LeastToMostSignificant, 8)]];
+
+struct cmmFunctionTable {
+	padding[1];
+	CmmFunctionReqs additionalReqs; 
+	s16 rank;
+	CmmFunction function;
+	padding[2];
+	Bitflag bitflag;
+};
