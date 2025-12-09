@@ -1,21 +1,21 @@
 // common includes
-#include <atlus/p5r/common/Bitflag.expat>
-#include <atlus/p5r/enums/Items.expat>
-#include <atlus/p5r/enums/confidants.expat>
+#include <p5r/common/Bitflag.expat>
+#include <p5r/enums/Items.expat>
+#include <p5r/enums/confidants.expat>
 
 // ftd struct includes
-#include <atlus/p5r/ftd/structs/cmmEventNo.expat>
-#include <atlus/p5r/ftd/structs/cmmFormat.expat>
-#include <atlus/p5r/ftd/structs/cmmFunctionTable.expat>
-#include <atlus/p5r/ftd/structs/fldWireAnimData.expat>
-#include <atlus/p5r/ftd/structs/fldDngPack.expat>
-#include <atlus/p5r/ftd/structs/datEncountPack.expat>
-#include <atlus/p5r/ftd/structs/fldObjFlag.expat>
-#include <atlus/p5r/ftd/structs/datTBoxRnd.expat>
-#include <atlus/p5r/ftd/structs/datTBox.expat>
-#include <atlus/p5r/ftd/structs/fldPlayerSpeed.expat>
-#include <atlus/p5r/ftd/structs/fldLmapStation.expat>
-#include <atlus/p5r/ftd/structs/fldLmapFare.expat>
+#include <p5r/ftd/structs/cmmEventNo.expat>
+#include <p5r/ftd/structs/cmmFormat.expat>
+#include <p5r/ftd/structs/cmmFunctionTable.expat>
+#include <p5r/ftd/structs/fldWireAnimData.expat>
+#include <p5r/ftd/structs/fldDngPack.expat>
+#include <p5r/ftd/structs/datEncountPack.expat>
+#include <p5r/ftd/structs/fldObjFlag.expat>
+#include <p5r/ftd/structs/datTBoxRnd.expat>
+#include <p5r/ftd/structs/datTBox.expat>
+#include <p5r/ftd/structs/fldPlayerSpeed.expat>
+#include <p5r/ftd/structs/fldLmapStation.expat>
+#include <p5r/ftd/structs/fldLmapFare.expat>
 
 str fileName = hex::prv::get_information("file_name");
 
