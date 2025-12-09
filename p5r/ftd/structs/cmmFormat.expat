@@ -1,4 +1,4 @@
-//#include <atlus/p5r/enums/confidants.expat>
+//#include <p5r/enums/confidants.expat>
 
 struct cmmFormat {
 	s32 listOrder, unknown1;
@@ -16,4 +16,5 @@ struct cmmFormat {
 
 fn fmt_cmmFormat(ref cmmFormat self) {
     return std::format("{}", self.cardTexPlus1);
+
 };
