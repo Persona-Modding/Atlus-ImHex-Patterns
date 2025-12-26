@@ -7,15 +7,15 @@
 #include <hex/provider.pat>
 
 // common includes
-#include <p5r/common/bitflag.expat>
-#include <p5r/common/numerics.expat>
+#include <atlus/p5r/common/bitflag.expat>
+#include <atlus/p5r/common/numerics.expat>
 
 // Roadmap structs
-#include <p5r/roadmap/structs/roadmap.expat>
-#include <p5r/roadmap/structs/texpack.expat>
-#include <p5r/roadmap/structs/texelem.expat>
-#include <p5r/roadmap/structs/texlist.expat>
-#include <p5r/roadmap/structs/roadmapParams.expat>
+#include <atlus/p5r/roadmap/structs/roadmap.expat>
+#include <atlus/p5r/roadmap/structs/texpack.expat>
+#include <atlus/p5r/roadmap/structs/texelem.expat>
+#include <atlus/p5r/roadmap/structs/texlist.expat>
+#include <atlus/p5r/roadmap/structs/roadmapParams.expat>
 
 // Globals
 str fileName = hex::prv::get_information("file_name");
