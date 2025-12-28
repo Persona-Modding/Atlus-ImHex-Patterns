@@ -9,7 +9,7 @@
 #include <hex/provider.pat>
 
 // ftd includes
-#include <p5r/ftd/ftdEntryStructs.expat>
+#include <atlus/p5r/ftd/ftdEntryStructs.expat>
 
 struct ftdStringList {
     u8 stringLen;

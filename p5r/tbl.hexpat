@@ -9,7 +9,7 @@
 #include <hex/provider.pat>
 
 // tbl includes
-#include <p5r/tbl/skill.expat>
+#include <atlus/p5r/tbl/skill.expat>
 
 // globals
 str fileName = hex::prv::get_information("file_name");
