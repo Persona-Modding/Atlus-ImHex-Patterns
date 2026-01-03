@@ -7,6 +7,7 @@
 #include <atlus/p5r/ftd/structs/cmmEventNo.expat>
 #include <atlus/p5r/ftd/structs/cmmFormat.expat>
 #include <atlus/p5r/ftd/structs/cmmFunctionTable.expat>
+#include <atlus/p5r/ftd/structs/cmpPsCoopSkillTable.expat>
 #include <atlus/p5r/ftd/structs/fldWireAnimData.expat>
 #include <atlus/p5r/ftd/structs/fldDngPack.expat>
 #include <atlus/p5r/ftd/structs/datEncountPack.expat>
@@ -30,6 +31,7 @@ struct ftdEntryStruct {
         ("CMMEVENTNO.CTD"): cmmEventNo entry [[name(s)]];
         ("CMMFORMAT.CTD"): cmmFormat entry [[name(s)]];
         ("CMMFUNCTIONTABLE.CTD"): cmmFunctionTable entries[entrySize / 12] [[name(s)]];
+        ("CMPPSCOOPSKILLTABLE.CTD"): cmpPsCoopSkillTable entries[entrySize / 8] [[name(s)]];
         ("FLDWIREANIMDATA.FTD"): fldWireAnimData entry [[name(s)]];
         ("FLDDNGPACK.FTD"): fldDngPack entry [[name(s)]];
         ("FLDPLAYERSPEED.FTD"): fldPlayerSpeed entry [[name(s)]];
