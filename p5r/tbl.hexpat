@@ -15,8 +15,9 @@
 #include <atlus/p5r/enums/traits.expat>
 
 // tbl includes
-#include <atlus/p5r/tbl/skill.expat>
+#include <atlus/p5r/tbl/elsai.expat>
 #include <atlus/p5r/tbl/persona.expat>
+#include <atlus/p5r/tbl/skill.expat>
 
 // globals
 str fileName = hex::prv::get_information("file_name");
@@ -29,8 +30,9 @@ struct tblBlock {
     currentBlockSize = blockSize;
     
     match (std::string::to_upper(fileName)) {
-        ("SKILL.TBL"): SkillTblBlock block;
+        ("ELSAI.TBL"): ElsaiTblBlock block;
         ("PERSONA.TBL"): PersonaTblBlock block;
+        ("SKILL.TBL"): SkillTblBlock block;
         (_) : u8 block[blockSize];
     }
     

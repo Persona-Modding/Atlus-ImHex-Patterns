@@ -1,0 +1,15 @@
+struct ElsaiSegment1 {
+	u16 unused, aiId;
+	u32 unknowns[10];
+};
+
+struct ElsaiSegment2 {
+	u16 unknowns[160];
+};
+
+struct ElsaiTblBlock {
+	match (currentBlockIdx) {
+		(0): ElsaiSegment1 block[currentBlockSize / 44];
+		(1): ElsaiSegment2 block[currentBlockSize / 320];
+	}
+};
