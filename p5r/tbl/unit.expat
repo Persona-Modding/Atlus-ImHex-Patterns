@@ -1,0 +1,105 @@
+bitfield UnitFlags {
+	noCrit: 1;
+	infiniteSp: 1;
+	hideStatus2: 1;
+	unknown1: 1;
+	unknown2: 1;
+	unknown3: 1;
+	unknown4: 1;
+	unknown5: 1;	// these 3 seem to
+	unknown6: 1;	// be common among
+	unknown7: 1;	// boss enemies
+	nonNegotiable: 1;
+	guaranteePersona: 1;
+	unknown8: 1;
+	unknown9: 1;
+	hideStatus1: 1;
+	noBegging: 1;
+	moreUnknowns: 13;
+	cbt_playerAnimCode: 1;
+	cbt_newAnimFeatures: 1;
+	cbt_customNameDDS: 1;
+}[[bitfield_order(std::core::BitfieldOrder::LeastToMostSignificant, 32)]];
+
+struct ItemDrop {
+	ItemIndex item;
+	u16 dropChance;
+};
+
+struct EventDrop {
+	u16 eventId;
+	ItemDrop itemDrop;
+};
+
+struct UnitStats {
+	UnitFlags flags;
+	Arcana arcana;
+	u8 unknown1;
+	u16 level;
+	u32 hp, sp;
+	StatBlock stats;
+	padding[1];
+	Skill skills[8];
+	u16 exp, money;
+	ItemDrop itemDrops[4];
+	EventDrop eventDrop;
+	ElementType atkElement;
+	u8 atkAccuracy;
+	u16 atkDmg;
+};
+
+bitfield AffinityFlags {
+	block: 1;
+	repel: 1;
+	drain: 1;
+	weak: 1;
+	resist: 1;
+	ailmentImmune: 1;
+	guaranteeAilment: 1;
+	doubleAilmentChance: 1;
+}[[bitfield_order(std::core::BitfieldOrder::LeastToMostSignificant, 8)]];
+
+struct ElementAffinity {
+	AffinityFlags flags;
+	u8 multiplier;
+};
+
+struct UnitAffinities {
+	ElementAffinity affinities[20];
+};
+
+enum TalkPersonality : u8 {
+	Timid,
+	Irritable,
+	Upbeat,
+	Gloomy,
+};
+
+struct UnitVoiceData {
+	u8 voiceId; // normal enemies use voicepack of voiceId + 1. this also corresponds to their negotiation dialogue
+	TalkPersonality personality;
+	u8 voiceABCvalue;
+	padding[1];
+	u16 minTalkMoney, maxTalkMoney;
+	ItemIndex commonTalkItems[4];
+	ItemIndex rareTalkItems[4];
+};
+
+struct UnitVisualData {
+	u16 personaId, modelId, unknown;
+};
+
+struct UnitUnknownSegment {
+	u8 unknown;
+};
+
+struct UnitTblBlock {
+    match (currentBlockIdx) {
+        (0) : UnitStats block[currentBlockSize / 68];
+        (1) : UnitAffinities block[currentBlockSize / 40];	// enemy affinities
+        (2) : UnitAffinities block[currentBlockSize / 40];	// persona affinities
+        (3) : UnitVoiceData block[currentBlockSize / 24];
+		(4) : UnitVisualData block[currentBlockSize / 6];
+		(5) : UnitUnknownSegment block[currentBlockSize];
+    }
+};

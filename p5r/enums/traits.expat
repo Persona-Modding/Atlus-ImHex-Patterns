@@ -1,5 +1,3 @@
-
-
 enum Trait : s16 {
     // Generated from trait name table entry: No Trait
     NoTrait = 0,

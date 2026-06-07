@@ -12,10 +12,6 @@ bitfield PersonaFlags {
 	padding: 6;
 }[[bitfield_order(std::core::BitfieldOrder::LeastToMostSignificant, 16)]];
 
-struct StatBlock {
-    u8 st, ma, en, ag, lu;
-};
-
 enum InheritType : u16 {
     None = 0,
     Physical = 1,
@@ -46,7 +42,8 @@ struct PersonaStats {
 enum LearnsetKind : s8 {
     None,
     Skill,
-    Trait = 3,
+    Unknown_FutabaRelated, // futaba's subrecover hp and sp skills have duplicate entries with this value that are "learned" at the same level as their upgraded versions. may indicate that these skills should be replaced?
+    Trait,
 };
 
 union SkillTraitId {

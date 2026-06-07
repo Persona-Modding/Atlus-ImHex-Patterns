@@ -1,0 +1,3 @@
+struct StatBlock {
+    u8 st, ma, en, ag, lu;
+};
