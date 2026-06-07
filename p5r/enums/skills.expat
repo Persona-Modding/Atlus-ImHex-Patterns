@@ -885,7 +885,7 @@ enum Skill : s16 {
     HighEnergy = 294,
 
     // Generated from skill name table entry: Ultimate Healing Support
-    UltimateHealingSupport = 295,
+    UltimateSupport = 295,
 
     // Generated from skill name table entry: Life Wall
     LifeWall = 296,

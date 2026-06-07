@@ -9,8 +9,13 @@
 #include <std/string.pat>
 #include <hex/provider.pat>
 
+// common includes
+#include <atlus/p5r/common/stats.expat>
+
 // enum includes
 #include <atlus/p5r/enums/confidants.expat>
+#include <atlus/p5r/enums/elements.expat>
+#include <atlus/p5r/enums/items.expat>
 #include <atlus/p5r/enums/skills.expat>
 #include <atlus/p5r/enums/traits.expat>
 
@@ -18,6 +23,7 @@
 #include <atlus/p5r/tbl/elsai.expat>
 #include <atlus/p5r/tbl/persona.expat>
 #include <atlus/p5r/tbl/skill.expat>
+#include <atlus/p5r/tbl/unit.expat>
 
 // globals
 str fileName = hex::prv::get_information("file_name");
@@ -33,6 +39,7 @@ struct tblBlock {
         ("ELSAI.TBL"): ElsaiTblBlock block;
         ("PERSONA.TBL"): PersonaTblBlock block;
         ("SKILL.TBL"): SkillTblBlock block;
+        ("UNIT.TBL"): UnitTblBlock block;
         (_) : u8 block[blockSize];
     }
     
