@@ -1,20 +1,3 @@
-#pragma author oceanstuck
-#pragma description Reads P5R mtd files, used for Thieves Den. Made with help of Cornflakes.
-#pragma endian big
-
-#include <hex/provider.pat>
-#include <std/string.pat>
-#include <atlus/p5r/common/bitflag.expat>
-
-str fileName = hex::prv::get_information("file_name");
-
-struct MtdHeader {
-    u32 version, magic, size, unknown1, unknown2;
-    padding[16];
-    u32 dataLength, entryCount;
-    padding[4];
-};
-
 enum AwardCategory : u8 {
     SchoolLife,
     Confidants,
@@ -33,7 +16,7 @@ struct MtdAwardDataEntry {
 struct MtdImageDataEntry{
     u16 unknown1, unknown2, unknown3, unknown4;
     u8 month, day; 
-    u16 priceMaybe;
+    u16 price;
     Bitflag bitflags[2];
 };
 
@@ -77,21 +60,3 @@ struct MtdVideoDataEntry {
     u16 price;
     Bitflag bitflags[2];
 };
-
-struct MtdEntry {
-    if (std::string::ends_with(fileName, "NameTable.mtd")) { char name[64]; }
-    else {
-        match (fileName) {
-            ("mypAwardDataTable.mtd"): MtdAwardDataEntry entry;
-            ("mypImageDataTable.mtd"): MtdImageDataEntry entry;
-            ("mypItemDataTable.mtd"):  MtdItemDataEntry entry;
-            ("mypOrnamentDataTable.mtd"): MtdOrnamentDataEntry entry;
-            ("mypSoundDataTable.mtd"): MtdSoundDataEntry entry;
-            ("mypVideoDataTable.mtd"): MtdVideoDataEntry entry;
-            (_) : u16 entry;
-        }
-    }
-};
-
-MtdHeader header @0x00;
-MtdEntry entries[header.entryCount] @0x30;
