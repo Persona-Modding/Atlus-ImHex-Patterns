@@ -2,6 +2,6 @@ struct cmpPsCoopSkillTable {
 	padding[1];
 	PartyMember partyId;
 	s16 rank; // 11 for third awakening behavior
-	s16 skillId;
+	Skill skillId;
 	padding[2];
 };

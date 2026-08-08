@@ -1,14 +1,19 @@
+#pragma once
+#include <std/core.pat>
+
 bitfield FlagSection {
     padding: 4;
-    section: 4;
+    signed section: 4;
 }[[bitfield_order(std::core::BitfieldOrder::LeastToMostSignificant, 8)]];
 
 struct Bitflag {
     FlagSection section;
-    u24 idInSection;
+    s24 idInSection;
 }[[transform("tfm_Bitflag"), format("tfm_Bitflag"), static]];
 
 fn tfm_Bitflag(ref Bitflag self){
+    if (self.section.section == -1 && self.idInSection == -1) return -1;
+
     u16 offset = 0;
     if (self.section.section == 1) offset = 3072;
     if (self.section.section == 2) offset = 6144;

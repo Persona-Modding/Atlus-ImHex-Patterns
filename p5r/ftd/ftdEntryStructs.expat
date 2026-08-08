@@ -2,11 +2,14 @@
 #include <atlus/p5r/common/Bitflag.expat>
 #include <atlus/p5r/enums/Items.expat>
 #include <atlus/p5r/enums/confidants.expat>
+#include <atlus/p5r/enums/skills.expat>
+#include <atlus/p5r/enums/traits.expat>
 
 // ftd struct includes
 #include <atlus/p5r/ftd/structs/cmmEventNo.expat>
 #include <atlus/p5r/ftd/structs/cmmFormat.expat>
 #include <atlus/p5r/ftd/structs/cmmFunctionTable.expat>
+#include <atlus/p5r/ftd/structs/cmpPsCoopChgPersonalTable.expat>
 #include <atlus/p5r/ftd/structs/cmpPsCoopSkillTable.expat>
 #include <atlus/p5r/ftd/structs/fldWireAnimData.expat>
 #include <atlus/p5r/ftd/structs/fldDngPack.expat>
@@ -18,6 +21,7 @@
 #include <atlus/p5r/ftd/structs/fldLmapStation.expat>
 #include <atlus/p5r/ftd/structs/fldLmapFare.expat>
 #include <atlus/p5r/ftd/structs/fldWholeMapTable.expat>
+#include <atlus/p5r/ftd/structs/thievesden.expat>
 
 str fileName = hex::prv::get_information("file_name");
 
@@ -40,6 +44,12 @@ struct ftdEntryStruct {
         ("FLDLMAPSTATION.FTD"): fldLmapStation entry [[name(s)]];
         ("FLDLMAPFARE.FTD"): fldLmapFare entry [[name(s)]];
         ("FLDWHOLEMAPTABLE.FTD"): fldWholeMapTable entry [[name(s)]];
+        ("MYPAWARDDATATABLE.MTD"): MtdAwardDataEntry entry;
+        ("MYPIMAGEDATATABLE.MTD"): MtdImageDataEntry entry;
+        ("MYPITEMDATATABLE.MTD"):  MtdItemDataEntry entry;
+        ("MYPORNAMENTDATATABLE.MTD"): MtdOrnamentDataEntry entry;
+        ("MYPSOUNDDATATABLE.MTD"): MtdSoundDataEntry entry;
+        ("MYPVIDEODATATABLE.MTD"): MtdVideoDataEntry entry;
         (_): u8 bytes[entrySize] [[name(s)]];
     }
 }[[inline]];

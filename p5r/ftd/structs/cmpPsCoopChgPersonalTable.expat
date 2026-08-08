@@ -1,5 +1,6 @@
 struct cmpPsCoopChgPersonalTable {
 	PartyMember partyId;
-	s16 rank, traitId; // "rank" is always 11, corresponding to third awakening, im not sure why they bother having it though when changing it doesnt seem to do anything anyway (game *only* seems to check if second param of SKILL_ADD_CMM is 1)
+	s16 rank; // "rank" is always 11, corresponding to third awakening, im not sure why they bother having it though when changing it doesnt seem to do anything anyway (game *only* seems to check if second param of SKILL_ADD_CMM is 1)
+	Trait traitId;
 	padding[2];
 };
