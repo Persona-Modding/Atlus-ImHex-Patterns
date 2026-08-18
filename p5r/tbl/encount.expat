@@ -27,9 +27,9 @@ bitfield EncountFlags {
 	unknown12: 1;
 	unknown13: 1;
 	cbtBattleFeatures: 1;
-	introBcd: 1;
-	loadEventBattleAcb: 1;
-	enemyMoveFirst_notPinch: 1;
+	cbt_introBcd: 1;
+	cbt_loadEventBattleAcb: 1;
+	cbt_enemyMoveFirst_notPinch: 1;
 	unknown14: 1;
 	unknown15: 1;
 	unknown16: 1;
