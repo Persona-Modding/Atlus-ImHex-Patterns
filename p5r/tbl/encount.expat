@@ -1,0 +1,102 @@
+#include <atlus/p5r/common/Bitflag.expat>
+
+bitfield EncountFlags {
+	noEscape: 1;
+	unknown1: 1;
+	unknown2: 1;
+	noCrits: 1;
+	forcePinch: 1;
+	loadFormationFile: 1;
+	unknown3: 1;
+	unknown4: 1;
+	loadEncountBf: 1;
+	unknown5: 1;
+	disableNav: 1;
+	bulletHail: 1;
+	deadShadowsPersist: 1;
+	noHoldup: 1;
+	positionHack: 1;
+	noKnockdown: 1;
+	unknown6: 1;
+	unknown7: 1;
+	unknown8: 1;
+	noNegotiation: 1;
+	unknown9: 1;
+	unknown10: 1;
+	unknown11: 1;
+	unknown12: 1;
+	unknown13: 1;
+	cbtBattleFeatures: 1;
+	introBcd: 1;
+	loadEventBattleAcb: 1;
+	enemyMoveFirst_notPinch: 1;
+	unknown14: 1;
+	unknown15: 1;
+	unknown16: 1;
+}[[bitfield_order(std::core::BitfieldOrder::LeastToMostSignificant, 32)]];
+
+struct EncounterInfo {
+	EncountFlags flags;
+	u16 unknown1, unknown2;
+	u16 unitIds[5];
+	u16 fieldMajor, fieldMinor, cueId, reinforcementUnitId;
+	u8 overallReinforcementChance;
+	u8 slotReinforcementChance[5];
+	u8 overallDisasterChance;
+	u8 slotDisasterChance[5];
+	u8 maxDisasterShadows;
+	u8 unknowns[5];
+};
+
+enum ForcedPartyIds : s16 {
+	None,
+    Joker,
+    Skull,
+    Mona,
+    Panther,
+    Fox,
+    Queen,
+    Noir,
+    Oracle,
+    Crow,
+    Violet,
+	Any = 100,
+	Joker2,
+};
+
+struct ForcedParties {
+	ForcedPartyIds partyMembers[4];
+};
+
+struct ChallengeBonus {
+	u32 target, type;
+	float multiplier;
+};
+
+struct ChallengeReward {
+	u32 requiredScore;
+	padding[6];
+	ItemIndex item;
+};
+
+struct ChallengeBattles {
+	u16 categoryId, categoryIndex;
+	padding[4];
+	Bitflag bitflag;
+	u16 turnBonusCount;
+	padding[2];
+	u32 turnBonus;
+	ChallengeBonus bonuses[5];
+	u32 encounterWaves[5];
+	padding[20];
+	u32 level, iconCount;
+	ChallengeReward rewards[3];
+};
+
+struct EncountTblBlock {
+    match (currentBlockIdx) {
+        (0) : EncounterInfo block[currentBlockSize / 44];
+        (1) : ForcedParties block[currentBlockSize / 8];
+        (2) : ChallengeBattles block[currentBlockSize / 164];
+    }
+};

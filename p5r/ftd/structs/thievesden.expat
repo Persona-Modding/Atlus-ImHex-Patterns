@@ -14,7 +14,7 @@ struct MtdAwardDataEntry {
 };
 
 struct MtdImageDataEntry{
-    u16 unknown1, unknown2, unknown3, unknown4;
+    u16 unknown1, unknown2, imageId, unknown4;
     u8 month, day; 
     u16 price;
     Bitflag bitflags[2];

@@ -21,6 +21,7 @@
 
 // tbl includes
 #include <atlus/p5r/tbl/elsai.expat>
+#include <atlus/p5r/tbl/encount.expat>
 #include <atlus/p5r/tbl/persona.expat>
 #include <atlus/p5r/tbl/skill.expat>
 #include <atlus/p5r/tbl/unit.expat>
@@ -37,6 +38,7 @@ struct tblBlock {
     
     match (std::string::to_upper(fileName)) {
         ("ELSAI.TBL"): ElsaiTblBlock block;
+        ("ENCOUNT.TBL"): EncountTblBlock block;
         ("PERSONA.TBL"): PersonaTblBlock block;
         ("SKILL.TBL"): SkillTblBlock block;
         ("UNIT.TBL"): UnitTblBlock block;
