@@ -16,8 +16,8 @@ bitfield UnitFlags {
 	hideStatus1: 1;
 	noBegging: 1;
 	moreUnknowns: 13;
-	cbt_playerAnimCode: 1;
 	cbt_newAnimFeatures: 1;
+	cbt_playerAnimCode: 1;
 	cbt_customNameDDS: 1;
 }[[bitfield_order(std::core::BitfieldOrder::LeastToMostSignificant, 32)]];
 
